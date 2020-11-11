@@ -1,0 +1,70 @@
+body {
+    width: 100%;
+    font-family: 'Neucha', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(211, 211, 211, 0.623);
+}
+
+#listwrapper {
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    background-color: white;
+    margin: 5%;
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin: 5% 0 5% 0;
+    border-bottom: 1px solid lightgrey;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 5% 0 5% 0;
+}
+
+ul li {
+    margin: 10px 0 10px 0;
+    border-bottom: 1px solid lightgrey;
+}
+
+ul li::before {
+    margin: 10px;
+    font-family: "Font Awesome 5 Free";
+    content: "\f111";
+    color: rgba(159, 224, 170, 0.644);
+    font-weight: 100;
+}
+
+ul li.checked::before {
+    margin: 10px;
+    font-family: "Font Awesome 5 Free";
+    content: "\f058";
+    font-weight: 900;
+    color: limegreen;
+}
+
+#footer {
+    margin: 5%;
+}
+
+#inputfield {
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+#addbutton {
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    background-color: rgba(159, 224, 170, 0.644);
+}
