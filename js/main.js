@@ -13,37 +13,29 @@ window.onload = function() {
     }
 
 
-
-    let list = document.querySelector('ul');
-    list.addEventListener('click', function(ev) {
-        if (ev.target.tagName === 'LI') {
-            ev.target.classList.toggle('checked');
-        }
-    }, false);
-
-
-
 }
 
 class Todo {
-    constructor(task, deadline, finished, deleted) {
+    constructor(task, id, finished, deleted) {
         this.task = task;
-        this.deadline = deadline;
+        this.id = id;
         this.finished = finished;
         this.deleted = deleted;
     }
 }
 
-let todo1 = new Todo("Send parcel", "Wednesday", false, false)
-let todo2 = new Todo("Return book", "Thursday", false, false);
-let todo3 = new Todo("Buy shampoo bar", "Saturday", false, false);
-let todo4 = new Todo("Return pants", "Friday", false, false);
-let todo5 = new Todo("Water plants", "Tomorrow", false, false);
-let todo6 = new Todo("Buy toilet roll", "Tomorrow", false, false);
-let todo7 = new Todo("Pay electricity bill", "Friday", false, false);
-let todo8 = new Todo("Buy coffee", "Tomorrow", false, false);
+let todo1 = new Todo("Send parcel", id = 1, false, false);
+let todo2 = new Todo("Return book", id = 2, false, false);
+let todo3 = new Todo("Buy shampoo bar", id = 3, false, false);
+let todo4 = new Todo("Return pants", id = 4, false, false);
+let todo5 = new Todo("Water plants", id = 5, false, false);
+let todo6 = new Todo("Buy toilet roll", id = 6, false, false);
+let todo7 = new Todo("Pay electricity bill", id = 7, false, false);
+let todo8 = new Todo("Buy coffee", id = 8, false, false);
 
 let todos = [];
+
+todos.id = "todos";
 
 todos.push(todo1);
 todos.push(todo2);
@@ -53,6 +45,9 @@ todos.push(todo5);
 todos.push(todo6);
 todos.push(todo7);
 todos.push(todo8);
+
+console.log(todos);
+
 
 
 function createAll() {
@@ -94,27 +89,31 @@ function createAll() {
     ulToDo.id = "todolist";
     listwrapper.appendChild(ulToDo);
 
-    let liToDo = document.createElement("li");
-    liToDo.id = "liToDo";
-    liToDo.innerText = inputfield.value;
-    inputfield.value = "";
+
 
     for (let i = 0; i < todos.length; i++) {
         let liToDo = document.createElement("li");
-        liToDo.innerHTML = todos[i].task + ", " + todos[i].deadline;
+        liToDo.id = "liToDo";
+        liToDo.innerHTML = todos[i].task;
         let deletebutton = document.createElement("button");
         deletebutton.id = "deletebutton";
+        deletebutton.innerHTML = "x";
         ulToDo.appendChild(liToDo);
+
+        deletebutton.addEventListener("click", () => { deleteLi(todos[i]) });
+
         liToDo.appendChild(deletebutton);
     }
 
-    document.getElementById("deletebutton").addEventListener("click", () => { myFunction(todos[i]) });
 
-    function myFunction() {
-        alert("Hello World!");
+    function deleteLi(todo) {
+        let li = document.getElementById("liToDo");
+        todo.deleted = true;
+        console.log(todo.deleted);
+        if (todo.deleted = true) {
+            li.style.display = "none";
+        }
     }
-
-
 
 
 }
