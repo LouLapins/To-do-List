@@ -9,29 +9,26 @@ window.onload = function() {
     listwrapper.appendChild(heading);
 
 
-    let header = document.createElement("header");
-    header.id = "header";
-    document.body.appendChild(header);
-
-
     let footer = document.createElement("footer");
     footer.id = "footer";
     document.body.appendChild(footer);
 
-
+    let inputwrapper = document.createElement("div");
+    inputwrapper.id = "inputwrapper";
+    footer.appendChild(inputwrapper);
 
     let inputfield = document.createElement("input");
     inputfield.id = "inputfield";
     inputfield.setAttribute("type", "text");
     inputfield.setAttribute("placeholder", "Add a task...")
-    footer.appendChild(inputfield);
+    inputwrapper.appendChild(inputfield);
 
 
 
     let addbutton = document.createElement("button");
     addbutton.id = "addbutton";
     addbutton.innerHTML = "+";
-    footer.appendChild(addbutton);
+    inputwrapper.appendChild(addbutton);
 
 
     let ulToDo = document.createElement("ul");
@@ -51,7 +48,7 @@ window.onload = function() {
             liToDo.innerHTML = todos[i].task;
             let deletebutton = document.createElement("button");
             deletebutton.id = "deletebutton";
-            deletebutton.innerHTML = "x";
+            deletebutton.className = "fas fa-times";
             ulToDo.appendChild(liToDo);
 
             deletebutton.addEventListener("click", () => { deleteTask(todos[i]) });
