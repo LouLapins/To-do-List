@@ -27,6 +27,7 @@ window.onload = function() {
 
     let addbutton = document.createElement("button");
     addbutton.id = "addbutton";
+
     addbutton.innerHTML = "+";
     inputwrapper.appendChild(addbutton);
 
@@ -57,23 +58,38 @@ window.onload = function() {
         }
     }
 
-    function deleteTask(todo) {
-        todo.deleted = true;
-        if (todo.deleted = true) {
-            todos.splice(0, 1);
-            todolist.innerHTML = "";
-            runLoop();
-        }
-    }
-
     // function deleteTask(todo) {
     //     todo.deleted = true;
-    //     if (todos[i].deleted = false) {
-    //         todos.push(todos[i]);
+    //     if (todo.deleted = true) {
+    //         todos.splice(0, 1);
     //         todolist.innerHTML = "";
     //         runLoop();
     //     }
     // }
+
+    function deleteTask(object) {
+        object.deleted = true;
+        todolist.innerHTML = "";
+        for (let i = 0; i < todos.length; i++)
+            if ((todos[i].deleted) == false) {
+                let liToDo = document.createElement("li");
+
+                liToDo.id = "liToDo";
+                liToDo.innerHTML = todos[i].task;
+                let deletebutton = document.createElement("button");
+                deletebutton.id = "deletebutton";
+                deletebutton.className = "fas fa-times";
+                ulToDo.appendChild(liToDo);
+
+                deletebutton.addEventListener("click", () => { deleteTask(todos[i]) });
+
+                liToDo.appendChild(deletebutton);
+            }
+    }
+
+
+
+
 
     function addTask() {
         let liToDo = document.createElement("li");
@@ -89,9 +105,10 @@ window.onload = function() {
         runLoop();
 
     }
-
-
 }
+
+
+
 
 class Todo {
     constructor(task, finished, deleted) {
