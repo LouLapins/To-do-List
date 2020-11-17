@@ -8,7 +8,7 @@ body {
     background-color: rgba(211, 211, 211, 0.623);
 }
 
-#listwrapper {
+#listWrapper {
     border: solid 2px black;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ ul li {
     text-align: left;
 }
 
-#deletebutton {
+#deleteButton {
     margin-left: 10%;
     width: 20px;
     height: 20px;
@@ -75,17 +75,17 @@ ul li.checked::before {
     width: 45%;
 }
 
-#inputwrapper {
+#inputWrapper {
     display: flex;
 }
 
-#inputfield {
+#inputField {
     font-family: 'Lato', sans-serif;
     font-size: 1em;
     font-weight: 300;
 }
 
-#addbutton {
+#addButton {
     font-family: 'Lato', sans-serif;
     font-size: 1em;
     background-color: rgba(159, 224, 170, 0.644);
