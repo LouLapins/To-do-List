@@ -6,6 +6,7 @@ window.onload = function() {
 
 }
 
+
 ///////////////////////////// ARRAY OF TODOS as objects ///////////////////////////////
 
 class Todo {
