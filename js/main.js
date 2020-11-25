@@ -6,7 +6,9 @@ window.onload = function() {
 
 }
 
+
 ///////////////////////////// Array of todos as objects ///////////////////////////////
+
 
 class Todo {
     constructor(task, finished, deleted) {
