@@ -1,6 +1,6 @@
-# To-do-List
+# To-do List
 
-# My first Java Script - ToDo-List
+# My first Javascript project - An interactive To-do List
 -------
 *This is school project for my 'Intro to Javascript' class, the focus of the assignment was to create html elements in the DOM through JS and to use objects, arrays and loops.*
 
