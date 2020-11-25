@@ -1,92 +1,136 @@
-body {
-    width: 100%;
-    font-family: 'Lato', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(211, 211, 211, 0.623);
-}
-
-#listWrapper {
-    border: solid 2px black;
-    display: flex;
-    flex-direction: column;
-    width: 85%;
-    background-color: white;
-}
-
-h2 {
-    font-family: 'Pacifico', cursive;
-    font-size: 3rem;
-    text-align: center;
-    margin: 5% 0 5% 0;
-    border-bottom: 1px solid lightgrey;
-}
-
-ul {
-    padding-inline-start: 0;
-}
-
-ul li {
-    padding: 10px 10px 5px 20px;
-    border-bottom: 1px solid lightgrey;
-    font-weight: 300;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    text-align: left;
-}
-
-#deleteButton {
-    margin-left: 10%;
-    width: 20px;
-    height: 20px;
-    color: black;
-    border: none;
-    background-color: white;
-    text-align: end;
-}
-
-
-/* ul li::before {
-    margin: 10px;
-    font-family: "Font Awesome 5 Free";
-    content: "\f111";
-    color: rgba(159, 224, 170, 0.644);
-    font-weight: 100;
-}
-
-ul li.checked::before {
-    margin: 10px;
-    font-family: "Font Awesome 5 Free";
-    content: "\f058";
-    font-weight: 900;
-    color: limegreen;
-} */
-
-#footer {
-    margin: 0;
-    padding: 5% 20% 5% 20%;
-    background-color: rgba(159, 224, 170, 0.644);
-    border-left: solid 2px black;
-    border-right: solid 2px black;
-    border-bottom: solid 2px black;
-    width: 45%;
-}
-
-#inputWrapper {
-    display: flex;
-}
-
-#inputField {
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
-    font-weight: 300;
-}
-
-#addButton {
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
-    background-color: rgba(159, 224, 170, 0.644);
-}
+        body {
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            background-color: rgba(168, 168, 168, 0.304);
+        }
+        
+        #wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #listWrapper {
+            border: solid 1px white;
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 50px 0px 50px -12px rgba(0, 0, 0, 0.75);
+        }
+        
+        h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 15% 0 5% 0;
+        }
+        
+        #sortButton {
+            background-color: rgba(152, 204, 243, 0.667);
+            font-size: 1.5em;
+            width: 100%;
+            border: none;
+            padding: 2%;
+        }
+        
+        ul {
+            padding-inline-start: 0;
+            margin-top: 0;
+        }
+        
+        ul li {
+            padding: 10px 10px 10px 20px;
+            border-bottom: 1px solid rgba(175, 176, 177, 0.215);
+            font-weight: 300;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            text-align: left;
+        }
+        
+        #deleteButton,
+        #finishedButton {
+            width: 20px;
+            height: 20px;
+            border: none;
+            background-color: white;
+            margin-left: 20px;
+        }
+        
+        #deleteButton:hover {
+            color: rgba(2, 2, 2, 0.55);
+        }
+        
+        #finishedButton {
+            color: rgba(2, 2, 2, 0.55);
+        }
+        
+        #finishedButton:hover {
+            color: black;
+        }
+        
+        .finished #finishedButton {
+            color: limegreen;
+        }
+        
+        li#liTodos.finished {
+            text-decoration: line-through;
+            color: rgba(8, 8, 8, 0.434);
+        }
+        
+        #footer {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #inputWrapper {
+            display: flex;
+            margin: 5%;
+        }
+        
+        #inputField {
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            font-weight: 300;
+            border: 1px solid rgba(175, 176, 177, 0.215);
+            border-radius: 5px;
+        }
+        
+        #addButton {
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            background-color: rgba(152, 204, 243, 0.667);
+            border: 1px solid rgba(175, 176, 177, 0.215);
+            border-radius: 5px;
+            width: 50px;
+            height: 30px;
+        }
+        
+        #sortButton:hover,
+        #addButton:hover {
+            background-color: rgba(152, 204, 243, 0.324);
+        }
+        /* Media queries  */
+        
+        @media (min-width:480px) {
+            #listWrapper {
+                width: 60%;
+            }
+        }
+        
+        @media (min-width:768px) {
+            #listWrapper {
+                width: 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            #listWrapper {
+                width: 40%;
+            }
+        }
