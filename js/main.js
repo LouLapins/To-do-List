@@ -7,7 +7,8 @@ window.onload = function() {
 }
 
 
-///////////////////////////// ARRAY OF TODOS as objects ///////////////////////////////
+///////////////////////////// Array of todos as objects ///////////////////////////////
+
 
 class Todo {
     constructor(task, finished, deleted) {
@@ -42,34 +43,39 @@ todos.push(todo8);
 
 console.log(todos);
 
-///////////// CREATING ALL HTML ELEMENTS THROUGH JS //////////////
+///////////// Creating all html elements through JS //////////////
 
 function createHtmlElements() {
 
+    let wrapper = document.createElement("div");
+    wrapper.id = "wrapper";
+    document.body.appendChild(wrapper);
+
     let listWrapper = document.createElement("div");
     listWrapper.id = "listWrapper";
-    document.body.appendChild(listWrapper);
-
+    wrapper.appendChild(listWrapper);
 
     let heading = document.createElement("h2");
     heading.innerHTML = "To do list:";
     listWrapper.appendChild(heading);
 
-
-    let footer = document.createElement("footer");
-    footer.id = "footer";
-    document.body.appendChild(footer);
-
-
-    let inputWrapper = document.createElement("div");
-    inputWrapper.id = "inputWrapper";
-    footer.appendChild(inputWrapper);
-
+    let sortButton = document.createElement("button");
+    sortButton.id = "sortButton";
+    sortButton.className = "fas fa-sort-alpha-down";
+    sortButton.addEventListener("click", sortList);
+    listWrapper.appendChild(sortButton);
 
     let ulTodos = document.createElement("ul");
     ulTodos.id = "ulTodos";
     listWrapper.appendChild(ulTodos);
 
+    let footer = document.createElement("footer");
+    footer.id = "footer";
+    listWrapper.appendChild(footer);
+
+    let inputWrapper = document.createElement("div");
+    inputWrapper.id = "inputWrapper";
+    footer.appendChild(inputWrapper);
 
     let inputField = document.createElement("input");
     inputField.id = "inputField";
@@ -85,42 +91,58 @@ function createHtmlElements() {
     inputWrapper.appendChild(addButton);
 }
 
-//////////////////// CREATING LOOP DISPLAYING ARRAY AS LISTITEMS //////////////////
+//////////////////// Creating loop displaying array as list items //////////////////
 
 function runLoop() {
     for (let i = 0; i < todos.length; i++)
 
-    ////// (BOOLEAN FUNCTION TO HIDE DELETED TODOS) /////
-        if ((todos[i].deleted) == false) {
+        if ((todos[i].deleted) == false) { ////// (Boolean function to hide deleted todos) /////
         let liTodos = document.createElement("li");
         liTodos.id = "liTodos";
         liTodos.innerHTML = todos[i].task;
         ulTodos.appendChild(liTodos);
+        let buttonWrapper = document.createElement("div");
+        liTodos.appendChild(buttonWrapper);
 
-        ///// (CREATING DELETEBUTTON INSIDE EACH LISTITEM) /////
+        //// (Creating check button inside each list item) ////
+        let finishedButton = document.createElement("button");
+        finishedButton.id = "finishedButton";
+        finishedButton.className = "far fa-check-circle";
+        finishedButton.addEventListener("click", () => { finishTask(todos[i]) });
+        buttonWrapper.appendChild(finishedButton);
+        if ((todos[i].finished) == true) {
+            liTodos.className = "finished";
+            finishedButton.className = "fas fa-check-circle"; ///// When clicked button changes appearance ///
+            finishedButton.addEventListener("click", () => { undoFinishTask(todos[i]) });
+        }
+
+        ///// (Creating delete button inside each list item) /////
         let deleteButton = document.createElement("button");
         deleteButton.id = "deleteButton";
         deleteButton.className = "fas fa-times";
         deleteButton.addEventListener("click", () => { deleteTask(todos[i]) });
-        liTodos.appendChild(deleteButton);
+        buttonWrapper.appendChild(deleteButton);
+
     }
 }
 
-///////////////////////// FUNCTION TO DELETE A TODO ///////////////////////////////
+//////////////////// Function to checkmark a todo as finished //////////////////////////
 
-// Splice Method //
+function finishTask(object) {
+    object.finished = true;
+    ulTodos.innerHTML = "";
+    runLoop();
+}
 
-// function deleteTask(todo) {
-//     todo.deleted = true;
-//     if (todo.deleted = true) {
-//         todos.splice(0, 1);
-//         ulTodos.innerHTML = "";
-//         runLoop();
-//     }
-// }
+//////////////////////// Function to uncheck same todo //////////////////////
 
+function undoFinishTask(object) {
+    object.finished = false;
+    ulTodos.innerHTML = "";
+    runLoop();
+}
 
-// Filter values in loop with boolean Method //
+///////////////////////// Function to delete a todo ///////////////////////////////
 
 function deleteTask(object) {
     object.deleted = true;
@@ -128,7 +150,7 @@ function deleteTask(object) {
     runLoop();
 }
 
-//////////////////////// FUNCTION TO ADD A NEW TODO ///////////////////////////////
+//////////////////////// Function to add a new todo ///////////////////////////////
 
 function addTask() {
     let liTodos = document.createElement("li");
@@ -143,4 +165,18 @@ function addTask() {
     ulTodos.innerHTML = "";
     runLoop();
 
+}
+
+/////////////////////// Function to sort tasks alphabetically //////////////////////
+
+function sortList() {
+    todos.sort(function(a, b) {
+        let x = a.task.toLowerCase();
+        let y = b.task.toLowerCase();
+        if (x < y) { return -1; }
+        if (x > y) { return 1; }
+        return 0;
+    });
+    ulTodos.innerHTML = "";
+    runLoop();
 }
