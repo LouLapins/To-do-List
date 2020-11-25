@@ -2,7 +2,7 @@
 
 # My first Java Script - ToDo-List
 -------
-*A to-do list made with JavaScript. This is school project based on JavaScript.*
+*This is school project for my 'Intro to Javascript' class, the focus of the assignment was to create html elements in the DOM through JS and to use objects, arrays and loops.*
 
 ## Installation:
 Make a new folder. 
